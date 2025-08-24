@@ -58,7 +58,7 @@ export default function App() {
         </button>
       </header>
 
-      <NoteList notes={data?.notes} />
+      <NoteList />
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
