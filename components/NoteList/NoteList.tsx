@@ -1,16 +1,15 @@
 "use client";
-import { useQuery } from "@tanstack/react-query";
-import { fetchNotes, deleteNote } from "@/lib/api";
+
+import { deleteNote } from "@/lib/api";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import css from "./NoteList.module.css";
 import type { Note } from "../../types/note";
 
-export default function NoteList() {
-  const { data } = useQuery({
-    queryKey: ["notes"],
-    queryFn: () => fetchNotes(),
-  });
+interface NotelistProps {
+  notes?: Note[];
+}
 
+export default function Notelist({ notes }: NotelistProps) {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
@@ -25,7 +24,7 @@ export default function NoteList() {
 
   return (
     <ul className={css.list}>
-      {data?.notes.map((note: Note) => (
+      {notes?.map((note) => (
         <li key={note.id} className={css.listItem}>
           <h2 className={css.title}>{note.title}</h2>
           <p className={css.content}>{note.content}</p>
@@ -35,7 +34,7 @@ export default function NoteList() {
               className={css.button}
               onClick={() => mutation.mutate(note.id)}
             >
-              Delete
+              Delete{" "}
             </button>
           </div>
         </li>

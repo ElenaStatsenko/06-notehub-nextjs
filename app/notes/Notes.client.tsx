@@ -6,12 +6,16 @@ import { useState, useEffect } from "react";
 import NoteList from "@/components/NoteList/NoteList";
 import Pagination from "@/components/Pagination/Pagination";
 import { fetchNotes } from "@/lib/api";
-
 import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import SearchBox from "@/components/SearchBox/SearchBox";
-
 import { useDebouncedCallback } from "use-debounce";
+
+
+// type NoteClientProps = {
+//   page: number;
+//   search: string;
+// };
 
 export default function NoteClient() {
   const [page, setPage] = useState(1);
@@ -58,7 +62,7 @@ export default function NoteClient() {
         </button>
       </header>
 
-      <NoteList />
+      <NoteList notes={data?.notes} />
 
       {isModalOpen && (
         <Modal onClose={closeModal}>
