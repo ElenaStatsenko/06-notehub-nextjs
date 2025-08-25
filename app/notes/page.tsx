@@ -1,11 +1,13 @@
-import css from "./notes.module.css";
+
 import { fetchNotes } from "@/lib/api";
 import {
   QueryClient,
   HydrationBoundary,
   dehydrate,
 } from "@tanstack/react-query";
-import NoteList from "@/components/NoteList/NoteList";
+// import NoteList from "@/components/NoteList/NoteList";
+import NoteClient from "./Notes.client";
+
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -20,9 +22,10 @@ const App = async ({ params }: Props) => {
   });
 
   return (
-    <div className={css.app}>
+    <div >
       <HydrationBoundary state={dehydrate(queryClient)}>
-        <NoteList />
+        <NoteClient />
+        
       </HydrationBoundary>
     </div>
   );

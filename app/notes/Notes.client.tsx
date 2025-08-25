@@ -1,5 +1,5 @@
 "use client";
-import css from "./App.module.css";
+import css from "./Notes.client.module.css";
 import { useQuery } from "@tanstack/react-query";
 import { keepPreviousData } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
@@ -13,7 +13,7 @@ import SearchBox from "@/components/SearchBox/SearchBox";
 
 import { useDebouncedCallback } from "use-debounce";
 
-export default function App() {
+export default function NoteClient() {
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [search, setSearch] = useState("");
