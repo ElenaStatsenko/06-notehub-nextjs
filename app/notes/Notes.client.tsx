@@ -30,6 +30,7 @@ export default function NoteClient() {
     queryKey: ["notes", page, search],
     queryFn: () => fetchNotes(page, search),
     placeholderData: keepPreviousData,
+    refetchOnMount: false,
   });
 
   useEffect(() => {
