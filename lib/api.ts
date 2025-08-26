@@ -41,3 +41,7 @@ export const deleteNote= async (noteId: string) => {
   const response = await notehubAPI.delete<Note>(`/notes/${noteId}`)
   return response.data
 };
+export const fetchNoteById= async (id:string) => {
+  const response = await notehubAPI.get<Note>(`/notes/${id}`)
+  return response.data
+}

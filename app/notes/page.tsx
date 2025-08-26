@@ -4,15 +4,17 @@ import NoteClient from "./Notes.client";
 
 
 
-
 const App = async ({
   searchParams,
 }: {
-  searchParams: { page?: string; search?: string };
+  searchParams: Promise<{ page?: string; search?: string }>;
 }) => {
+  const params = await searchParams; // ждем searchParams
   const queryClient = new QueryClient();
-  const page = Number(searchParams.page) || 1;
-  const search = searchParams.search || "";
+
+  const page = Number(params.page) || 1;
+  const search = params.search || "";
+
   await queryClient.prefetchQuery({
     queryKey: ["notes", page, search],
     queryFn: () => fetchNotes(page, search),
