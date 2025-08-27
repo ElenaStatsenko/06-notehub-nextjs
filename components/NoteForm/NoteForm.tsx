@@ -88,8 +88,6 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
           </button>
 
           <button type="submit" className={css.submitButton} disabled={mutation.isPending}>
-
-          <button type="submit" className={css.submitButton} disabled={mutation.isLoading}>
             Create note
           </button>
         </div>
