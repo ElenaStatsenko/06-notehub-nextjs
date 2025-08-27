@@ -86,7 +86,11 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
           <button type="button" onClick={onCancel} className={css.cancelButton}>
             Cancel
           </button>
+<<<<<<< Updated upstream
           <button type="submit" className={css.submitButton} disabled={mutation.isPending}>
+=======
+          <button type="submit" className={css.submitButton} disabled={mutation.isLoading}>
+>>>>>>> Stashed changes
             Create note
           </button>
         </div>
