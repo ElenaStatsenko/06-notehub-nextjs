@@ -14,10 +14,11 @@ const App = async ({
 
   const page = Number(params.page) || 1;
   const search = params.search || "";
-
+  // 
   await queryClient.prefetchQuery({
     queryKey: ["notes", page, search],
     queryFn: () => fetchNotes(page, search),
+   
   });
 
   return <NoteClient />;
