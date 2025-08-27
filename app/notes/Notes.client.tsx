@@ -11,16 +11,15 @@ import NoteForm from "@/components/NoteForm/NoteForm";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import { useDebouncedCallback } from "use-debounce";
 
+type NoteClientProps = {
+  initialPage: number;
+  initialSearch: string;
+};
 
-// type NoteClientProps = {
-//   page: number;
-//   search: string;
-// };
-
-export default function NoteClient() {
-  const [page, setPage] = useState(1);
+export default function NoteClient({ initialPage, initialSearch }: NoteClientProps) {
+  const [page, setPage] = useState(initialPage);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(initialSearch);
 
   const debouncedSetSearch = useDebouncedCallback((value: string) => {
     setSearch(value);

@@ -6,11 +6,11 @@ import css from "./NoteList.module.css";
 import type { Note } from "../../types/note";
 import Link from "next/link";
 
-interface NotelistProps {
+interface NoteListProps {
   notes?: Note[];
 }
 
-export default function Notelist({ notes }: NotelistProps) {
+export default function Notelist({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
