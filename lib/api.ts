@@ -6,7 +6,7 @@ import type { ValuesFormProps } from "../types/note";
 export default interface NotesResponse {
   notes: Note[];
   totalPages: number;
-  page: number;
+ 
 }
 
 const myKey = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
