@@ -102,13 +102,16 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
           <button type="button" onClick={onCancel} className={css.cancelButton}>
             Cancel
           </button>
-          <button type="submit" className={css.submitButton} disabled={false}>
+
+          <button
+            type="submit"
+            className={css.submitButton}
+            disabled={mutation.isPending}
+          >
             Create note
           </button>
         </div>
-        {mutation.isError && (
-          <div className={css.error}>Failed to create note. Try again.</div>
-        )}
+        {mutation.isError && <ErrorMessageComponent />}
       </Form>
     </Formik>
   );
