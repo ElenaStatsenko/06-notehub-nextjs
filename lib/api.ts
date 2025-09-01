@@ -1,12 +1,9 @@
 import axios from "axios";
 import type { Note } from "../types/note";
 import type { ValuesFormProps } from "../types/note";
-;
-
 export default interface NotesResponse {
   notes: Note[];
   totalPages: number;
-  page: number;
 }
 
 const myKey = process.env.NEXT_PUBLIC_NOTEHUB_TOKEN;
@@ -37,7 +34,7 @@ export const createNote = async (note: ValuesFormProps) => {
   return response.data;
 };
 
-export const deleteNote= async (noteId: string) => {
-  const response = await notehubAPI.delete<Note>(`/notes/${noteId}`)
-  return response.data
+export const deleteNote = async (noteId: string) => {
+  const response = await notehubAPI.delete<Note>(`/notes/${noteId}`);
+  return response.data;
 };

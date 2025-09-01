@@ -1,9 +1,10 @@
 import { fetchNotes } from "@/lib/api";
-import { QueryClient } from "@tanstack/react-query";
+import {
+  QueryClient,
+  HydrationBoundary,
+  dehydrate,
+} from "@tanstack/react-query";
 import NoteClient from "./Notes.client";
-
-
-
 
 const App = async ({
   searchParams,
@@ -18,7 +19,11 @@ const App = async ({
     queryFn: () => fetchNotes(page, search),
   });
 
-  return <NoteClient />;
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <NoteClient />;
+    </HydrationBoundary>
+  );
 };
 
 export default App;

@@ -11,7 +11,6 @@ import NoteForm from "@/components/NoteForm/NoteForm";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import { useDebouncedCallback } from "use-debounce";
 
-
 // type NoteClientProps = {
 //   page: number;
 //   search: string;
@@ -29,6 +28,7 @@ export default function NoteClient() {
   const { data, isSuccess } = useQuery({
     queryKey: ["notes", page, search],
     queryFn: () => fetchNotes(page, search),
+    refetchOnMount: false,
     placeholderData: keepPreviousData,
   });
 
@@ -47,7 +47,12 @@ export default function NoteClient() {
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
-        <SearchBox onSearch={debouncedSetSearch} />
+        <SearchBox
+          onSearch={(value) => {
+            setPage(1);
+            debouncedSetSearch(value);
+          }}
+        />
 
         {isSuccess && data.totalPages > 1 && (
           <Pagination

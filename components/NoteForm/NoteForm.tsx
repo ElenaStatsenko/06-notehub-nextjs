@@ -5,7 +5,8 @@ import type { FormikHelpers } from "formik";
 import * as Yup from "yup";
 import type { ValuesFormProps } from "../../types/note";
 import { createNote } from "@/lib/api";
-// import ErrorMessageComponent from "../ErrorMessageComponent/ErrorMessageComponent";
+import ErrorMessageComponent from "../ErrorMessageComponent/ErrorMessageComponent";
+
 interface NoteFormProps {
   onCancel: () => void;
 }
@@ -55,7 +56,12 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
         <div className={css.formGroup}>
           <label htmlFor="title">Title</label>
           <Field id="title" type="text" name="title" className={css.input} />
-          <ErrorMessage name="title" className={css.error} />
+          <ErrorMessage
+            name="title"
+            render={(msg) => (
+              <ErrorMessageComponent message={msg} className={css.error} />
+            )}
+          />
         </div>
 
         <div className={css.formGroup}>
@@ -67,7 +73,12 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
             rows={8}
             className={css.textarea}
           />
-          <ErrorMessage name="content" className={css.error} />
+          <ErrorMessage
+            name="content"
+            render={(msg) => (
+              <ErrorMessageComponent message={msg} className={css.error} />
+            )}
+          />
         </div>
 
         <div className={css.formGroup}>
@@ -79,7 +90,12 @@ export default function NoteForm({ onCancel }: NoteFormProps) {
             <option value="Meeting">Meeting</option>
             <option value="Shopping">Shopping</option>
           </Field>
-          <ErrorMessage name="tag" className={css.error} />
+          <ErrorMessage
+            name="tag"
+            render={(msg) => (
+              <ErrorMessageComponent message={msg} className={css.error} />
+            )}
+          />
         </div>
 
         <div className={css.actions}>
